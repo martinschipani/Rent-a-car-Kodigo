@@ -18,4 +18,8 @@ public class Price {
     public void multiply(int days) {
         this.value *= days;
     }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
 }

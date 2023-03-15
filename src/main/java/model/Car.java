@@ -1,4 +1,6 @@
 package model;
+import exceptions.InvalidDaysException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -12,6 +14,9 @@ public class Car extends Vehicle {
 
     @Override
     public Price consultRentalPrice(int days) {
+        if(days <= 0){
+            throw new InvalidDaysException();
+        }
         for(Characteristic characteristic: this.characteristics){
             this.basePrice.add(characteristic);
         }

@@ -10,12 +10,16 @@ public class RentACarTest {
     private Vehicle baseCar;
     private Car premiumCar;
     private Vehicle cargoVehicle;
+    private Vehicle microBus;
+    private Vehicle truck;
     @BeforeEach
     void setUp(){
         this.rentACar = new RentACar();
         this.baseCar = new Car("VEL096");
         this.premiumCar = new Car("MSS083");
         this.cargoVehicle = new CargoVehicle("ARG023", 800);
+        this.microBus = new MicroBus("RUZ092");
+        this.truck = new Truck("OPA089");
     }
 
     @Test
@@ -43,8 +47,22 @@ public class RentACarTest {
 
     @Test
     @DisplayName("Consult the price of renting a cargo vehicle")
-    public void test03ConsultTheRentalPriceOfACargoVehicleWithMoreEqualTo800For2DaysIs8060(){
+    public void test04ConsultTheRentalPriceOfACargoVehicleWithMoreEqualTo800For2DaysIs8060(){
         this.rentACar.addVehicle(this.cargoVehicle);
         assertEquals(1660, this.rentACar.consultRentalPrice("ARG023", 2));
+    }
+
+    @Test
+    @DisplayName("Consult the price of renting a minibus")
+    public void test05CheckMinibusRentalPriceFor4DaysIs395(){
+        this.rentACar.addVehicle(this.microBus);
+        assertEquals(395, this.rentACar.consultRentalPrice("RUZ092", 4));
+    }
+
+    @Test
+    @DisplayName("Consult the price of renting a truck")
+    public void test06ConsultThePriceOfATruckFor10DaysIs18000(){
+        this.rentACar.addVehicle(this.truck);
+        assertEquals(18000, this.rentACar.consultRentalPrice("OPA089", 10));
     }
 }
