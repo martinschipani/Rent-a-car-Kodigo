@@ -10,10 +10,8 @@ public class Truck extends Vehicle {
 
     @Override
     public Price consultRentalPrice(int days) {
-        if(days <= 0){
-            throw new InvalidDaysException();
-        }
-        this.basePrice.multiply(days);
-        return this.basePrice;
+        Price consultPrice = setUpConsult(days);
+        consultPrice.multiply(days);
+        return consultPrice;
     }
 }

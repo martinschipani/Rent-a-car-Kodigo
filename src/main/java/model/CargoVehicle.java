@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.InvalidDaysException;
 import exceptions.InvalidMawException;
 
 public class CargoVehicle extends Vehicle {
@@ -14,8 +15,9 @@ public class CargoVehicle extends Vehicle {
     }
 
     public Price consultRentalPrice(int days){
-        this.basePrice.add(this.maw);
-        this.basePrice.multiply(days);
-        return this.basePrice;
+        Price consultPrice = this.setUpConsult(days);
+        consultPrice.add(this.maw);
+        consultPrice.multiply(days);
+        return consultPrice;
     }
 }

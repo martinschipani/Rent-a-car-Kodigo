@@ -12,11 +12,9 @@ public class MicroBus extends Vehicle {
 
     @Override
     public Price consultRentalPrice(int days) {
-        if(days <= 0){
-            throw new InvalidDaysException();
-        }
-        this.basePrice.multiply(days);
-        this.basePrice.add(this.adicional);
-        return this.basePrice;
+        Price consultPrice = this.setUpConsult(days);
+        consultPrice.multiply(days);
+        consultPrice.add(this.adicional);
+        return consultPrice;
     }
 }

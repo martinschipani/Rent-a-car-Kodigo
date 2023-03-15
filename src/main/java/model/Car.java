@@ -14,14 +14,12 @@ public class Car extends Vehicle {
 
     @Override
     public Price consultRentalPrice(int days) {
-        if(days <= 0){
-            throw new InvalidDaysException();
-        }
+        Price consultPrice = this.setUpConsult(days);
         for(Characteristic characteristic: this.characteristics){
-            this.basePrice.add(characteristic);
+            consultPrice.add(characteristic);
         }
-        this.basePrice.multiply(days);
-        return this.basePrice;
+        consultPrice.multiply(days);
+        return consultPrice;
     }
 
     public void addCharacteristic(Characteristic characteristic) {

@@ -15,11 +15,15 @@ public class Price {
         this.value += characteristic.join();
     }
 
-    public void multiply(int days) {
-        this.value *= days;
+    public void multiply(int value) {
+        this.value *= value;
     }
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public void copyValue(Price price) {
+        this.value = price.getValue();
     }
 }
