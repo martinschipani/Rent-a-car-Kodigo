@@ -12,6 +12,7 @@ public class RentACarTest {
     private Vehicle cargoVehicle;
     private Vehicle microBus;
     private Vehicle truck;
+    private Client person;
     @BeforeEach
     void setUp(){
         this.rentACar = new RentACar();
@@ -20,6 +21,7 @@ public class RentACarTest {
         this.cargoVehicle = new CargoVehicle("ARG023", 800);
         this.microBus = new MicroBus("RUZ092");
         this.truck = new Truck("OPA089");
+        this.person = new Person("Martin Schipani");
     }
 
     @Test
@@ -64,5 +66,13 @@ public class RentACarTest {
     public void test06ConsultThePriceOfATruckFor10DaysIs18000(){
         this.rentACar.addVehicle(this.truck);
         assertEquals(18000, this.rentACar.consultRentalPrice("OPA089", 10));
+    }
+
+    @Test
+    @DisplayName("Rent vehicle to client")
+    public void test07RentAPremiumCarWith4SeatingToAClientFor7DaysThePrice490(){
+        this.premiumCar.addCharacteristic(new Premium(4));
+        this.rentACar.addRent(this.person, this.premiumCar, 7);
+        assertEquals(490, this.person.calculateTotal());
     }
 }

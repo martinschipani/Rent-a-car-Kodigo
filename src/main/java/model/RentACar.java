@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public class RentACar {
     private HashMap<String, Vehicle> vehicles;
+    private HashMap<String, Client> clients;
 
     public RentACar(){
         this.vehicles = new HashMap<>();
@@ -37,8 +38,20 @@ public class RentACar {
         this.vehicles.remove(patent);
     }
 
+    public void addRent(Client client, Rentable rentable, int days) {
+        if(days <= 0){
+            throw new InvalidDaysException();
+        }
+        Rent rent = new Rent(rentable, days);
+        if(this.clients.containsKey(client.getName())){
+            client.addRent(rent);
+        }
+    }
+
     //METHODS FOR TEST
     public int getNumberOfVehiclesTest() {
         return this.vehicles.size();
     }
+
+
 }
