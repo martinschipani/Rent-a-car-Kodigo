@@ -1,0 +1,22 @@
+Se pretende desarrollar una aplicación que permita calcular los precios de alquiler de una empresa dedicada al alquiler de varios tipos de vehículos. Cada vehículo está identificado de forma única por medio de su patente.
+
+La empresa alquila diferentes tipos de vehículos a sus clientes, tanto para el transporte de personas como de carga. Actualmente los vehículos alquilados por la empresa son automóviles, microbuses, furgonetas de carga y camiones.
+
+El precio de alquiler de cualquier vehículo tiene un componente base que depende de los días alquilados a razón de $30 por día.
+
+Si el auto pertenece a una categoria base
+Si el auto pertenece a una categoría premium el precio de los asientos es de $10.
+Para vehículos de carga se cobra el precio base más $5 * MAW (MAW = peso máximo autorizado en toneladas).
+Para microbuses se cobra el precio base $90 mas un fijo de $35 independientemente de los dias.
+El pago en efectivo tiene un descuento del %10 con respecto a tarjeta. (falta implementar)
+Asegurar vehiculo se suma un %15 el valor del alquiler. (falta implementar)
+Para los camiones el precio base es $1800.
+
+Casos de uso:
+
+Agregar vehiculo
+Quitar vechiculo
+Consultar precio de alquiler
+Alquilar vehiculo minimo por un dia
+Asegurar vehiculo
+"Permitir tener varios vehiculos alquilados a cada cliente"

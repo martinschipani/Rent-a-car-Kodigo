@@ -1,0 +1,16 @@
+@startuml
+title Check premium car rental price
+actor test03
+activate RentACar
+activate Car
+test03 -> Car: addCharacteristic(new Premium(2))
+create Premium
+Car -> Premium: new Premium(2)
+activate Premium
+Premium --> Car: characteristic.add(Premium)
+test03 -> RentACar: addVehicle(Car))
+test03 -> RentACar: consultRentalPrice("ARG023", 3)
+RentACar -> Car: consultRentalPrice(3)
+Car --> RentACar: 350
+RentACar --> test03: 350
+@enduml
