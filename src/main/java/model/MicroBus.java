@@ -1,7 +1,5 @@
 package model;
 
-import exceptions.InvalidDaysException;
-
 public class MicroBus extends Vehicle {
     private final Characteristic adicional;
     public MicroBus(String patent) {

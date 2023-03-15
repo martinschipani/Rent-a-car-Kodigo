@@ -5,5 +5,5 @@ public interface Client {
 
     void addRent(Rent rent);
 
-    double calculateTotal();
+    Price calculateTotal();
 }

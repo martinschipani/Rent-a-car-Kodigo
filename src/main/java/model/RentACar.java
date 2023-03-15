@@ -10,6 +10,7 @@ public class RentACar {
 
     public RentACar(){
         this.vehicles = new HashMap<>();
+        this.clients = new HashMap<>();
     }
 
     private void checkPatent(String patent){
@@ -24,13 +25,13 @@ public class RentACar {
         this.vehicles.put(vehicle.getPatent(), vehicle);
     }
 
-    public double consultRentalPrice(String patent, int days) {
+    public Price consultRentalPrice(String patent, int days) {
         if(days <= 0){
             throw new InvalidDaysException();
         }
         this.checkPatent(patent);
         Vehicle vehicle = this.vehicles.get(patent);
-        return  vehicle.consultRentalPrice(days).getValue();
+        return  vehicle.consultRentalPrice(days);
     }
 
     public void removeVehicle(String patent) {

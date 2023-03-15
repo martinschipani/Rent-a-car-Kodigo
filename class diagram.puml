@@ -1,3 +1,110 @@
 @startuml
+class Additional implements Characteristic {
+    - value: double
+    + Additional(value: double)
+    + join(): double
+}
 
+class Car extends Vehicle {
+    + consultRentalPrice(days: int): Price
+    + addCharacteristic(characteristics: Characteristic)
+}
+Car o- "*" Characteristic
+Car ..> Price
+
+class CargoVehicle extends Vehicle{
+    + CargoVehicle(patent: String, maw: int)
+    + consultRentalPrice(days: int): Price
+}
+CargoVehicle *- Maw
+
+interface Characteristic{
+    join(): double
+}
+
+interface Client{
+    getName(): String
+    addRent(rent: Rent)
+    calculateTotal(): Price
+}
+Client o- "*" Rent
+Client ..> Price
+
+class Maw implements Characteristic{
+    - value: int
+    + Maw(value: int)
+    + join(): double
+}
+
+class MicroBus extends Vehicle {
+    - adicional: Additional
+    + consultRentalPrice(days: int): Price
+}
+MicroBus *- Additional
+MicroBus ..> Price
+
+class Person extends Client {
+    - name: String
+    + getName(): String
+    + addRent(rent: Rent)
+    + calculateTotal(): Price
+}
+
+class Premium implements Characteristic {
+    - seating: int
+    - seatingPrice: int
+    + Premium(seating: int)
+    + join(): double
+}
+
+class Price {
+    - value: double
+    + Price(value: double)
+    + getValue(): double
+    + multiply(value: int)
+    + setValue(value: int)
+    + copyValue(value: double)
+    + addValue(value: double)
+}
+
+class Rent {
+    - rentable: Rentable
+    - days: int
+    + Rent(rentable: Rentable, days: int)
+    + calculatePrice(): Price
+}
+Rent o- Rentable
+Rent .. Price
+
+interface Rentable {
+    calculatePrice(days: int): Price
+}
+
+
+class RentACar {
+    - vehicles: HashMap<String, Vehicle>
+    - clients: HashMap<String, Client>
+    - checkPatent(patent: String)
+    + addVehicle(vehicle: Vehicle)
+    + consultRentalPrice(patent: String, days: int): Price
+    + removeVehicle(patent: String)
+    + addRent(client: Client, rentable: Rentable, days: int)
+}
+RentACar o- "*" Rentable
+RentACar o- "*" Client
+
+class Truck extends Vehicle {
+    + consultRentalPrice(days: int): Price
+}
+Truck ..> Price
+
+abstract class Vehicle implements Rentable {
+    # patent: String
+    # basePrice: Price
+    + Vehicle(patent: String)
+    # setUpConsult(days: int): Price
+    + getPatent(): String
+    + {abstract} consultRentalPrice(days: int): Price
+}
+Vehicle ..> Price
 @enduml

@@ -21,10 +21,10 @@ public class Person implements Client {
         this.rents.add(rent);
     }
 
-    public double calculateTotal(){
-        double total = 0;
+    public Price calculateTotal(){
+        Price total = new Price(0);
         for(Rent rent: this.rents){
-            total += rent.calculatePrice();
+            total.addValue(rent.calculatePrice().getValue());
         }
         return total;
     }

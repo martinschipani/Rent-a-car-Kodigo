@@ -1,5 +1,6 @@
 package model;
 
 public interface Rentable {
-    double calculatePrice();
+
+    Price consultRentalPrice(int days);
 }

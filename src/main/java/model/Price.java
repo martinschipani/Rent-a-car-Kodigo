@@ -26,4 +26,8 @@ public class Price {
     public void copyValue(Price price) {
         this.value = price.getValue();
     }
+
+    public void addValue(double value) {
+        this.value += value;
+    }
 }

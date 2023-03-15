@@ -9,7 +9,7 @@ public class Rent {
         this.rentable = rentable;
         this.days = days;
     }
-    public double calculatePrice() {
-        return this.rentable.calculatePrice() * this.days;
+    public Price calculatePrice() {
+        return this.rentable.consultRentalPrice(this.days);
     }
 }

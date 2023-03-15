@@ -28,7 +28,7 @@ public class RentACarTest {
     @DisplayName("Check base car rental price")
     public void test01RentABaseCarFor5DaysItsPriceIs$150(){
         this.rentACar.addVehicle(this.baseCar);
-        assertEquals(150, this.rentACar.consultRentalPrice("VEL096", 5));
+        assertEquals(150, this.rentACar.consultRentalPrice("VEL096", 5).getValue());
     }
 
     @Test
@@ -44,28 +44,28 @@ public class RentACarTest {
     public void test03ConsultThePriceOfRentingAPremiumCarWith2SeatsFor7DaysIs350(){
         this.premiumCar.addCharacteristic(new Premium(2));
         this.rentACar.addVehicle(this.premiumCar);
-        assertEquals(350, this.rentACar.consultRentalPrice("MSS083", 7));
+        assertEquals(350, this.rentACar.consultRentalPrice("MSS083", 7).getValue());
     }
 
     @Test
     @DisplayName("Consult the price of renting a cargo vehicle")
     public void test04ConsultTheRentalPriceOfACargoVehicleWithMoreEqualTo800For2DaysIs8060(){
         this.rentACar.addVehicle(this.cargoVehicle);
-        assertEquals(1660, this.rentACar.consultRentalPrice("ARG023", 2));
+        assertEquals(1660, this.rentACar.consultRentalPrice("ARG023", 2).getValue());
     }
 
     @Test
     @DisplayName("Consult the price of renting a minibus")
     public void test05CheckMinibusRentalPriceFor4DaysIs395(){
         this.rentACar.addVehicle(this.microBus);
-        assertEquals(395, this.rentACar.consultRentalPrice("RUZ092", 4));
+        assertEquals(395, this.rentACar.consultRentalPrice("RUZ092", 4).getValue());
     }
 
     @Test
     @DisplayName("Consult the price of renting a truck")
     public void test06ConsultThePriceOfATruckFor10DaysIs18000(){
         this.rentACar.addVehicle(this.truck);
-        assertEquals(18000, this.rentACar.consultRentalPrice("OPA089", 10));
+        assertEquals(18000, this.rentACar.consultRentalPrice("OPA089", 10).getValue());
     }
 
     @Test
@@ -73,6 +73,6 @@ public class RentACarTest {
     public void test07RentAPremiumCarWith4SeatingToAClientFor7DaysThePrice490(){
         this.premiumCar.addCharacteristic(new Premium(4));
         this.rentACar.addRent(this.person, this.premiumCar, 7);
-        assertEquals(490, this.person.calculateTotal());
+        assertEquals(490, this.person.calculateTotal().getValue());
     }
 }
