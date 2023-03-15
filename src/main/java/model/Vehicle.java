@@ -3,5 +3,6 @@ package model;
 public interface Vehicle {
     String getPatent();
 
-    double consultRentalPrice(int dias);
+    Price consultRentalPrice(int days);
+    void addCharacteristic(Characteristic characteristic);
 }

@@ -21,4 +21,13 @@ public class ThereAreNoVehiclesExceptionTest {
                     this.rentACar.consultRentalPrice("VEL096", 1);
                 });
     }
+
+    @Test
+    @DisplayName("remove a vehicle when there are no vehicles")
+    public void tes02RemovingAVehicleWithEmptyListThrowsException(){
+        assertThrows(ThereAreNoVehiclesException.class,
+                ()->{
+                    this.rentACar.removeVehicle("MSS083");
+                });
+    }
 }
