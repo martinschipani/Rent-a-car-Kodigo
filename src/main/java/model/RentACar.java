@@ -1,6 +1,6 @@
 package model;
 import exceptions.InvalidDaysException;
-import exceptions.ThePatentWasNotFound;
+import exceptions.ThePatentWasNotFoundException;
 import exceptions.ThereAreNoVehiclesException;
 import java.util.HashMap;
 
@@ -16,7 +16,7 @@ public class RentACar {
             throw new ThereAreNoVehiclesException();
         }
         if(! this.vehicles.containsKey(patent)){
-            throw new ThePatentWasNotFound();
+            throw new ThePatentWasNotFoundException();
         }
     }
     public void addVehicle(Vehicle vehicle) {

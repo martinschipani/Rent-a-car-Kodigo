@@ -1,14 +1,15 @@
 package exceptions;
 import model.Car;
 import model.RentACar;
+import model.Vehicle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ThePatentWasNotFoundTest {
+public class ThePatentWasNotFoundExceptionTest {
     private RentACar rentACar;
-    private Car baseCar;
+    private Vehicle baseCar;
     @BeforeEach
     public void setUp(){
         this.rentACar = new RentACar();
@@ -19,7 +20,7 @@ public class ThePatentWasNotFoundTest {
     @DisplayName("Consult rental price, the license plate cannot be found")
     public void test01ConsultRentalPriceWithNonExistentPatentLaunchesException(){
         this.rentACar.addVehicle(baseCar);
-        assertThrows(ThePatentWasNotFound.class,
+        assertThrows(ThePatentWasNotFoundException.class,
                 ()->{
                     this.rentACar.consultRentalPrice("MSS083", 2);
                 });

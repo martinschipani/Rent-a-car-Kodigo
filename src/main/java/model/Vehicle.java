@@ -1,8 +1,17 @@
 package model;
 
-public interface Vehicle {
-    String getPatent();
+public abstract class Vehicle {
+    protected final String patent;
+    protected final Price basePrice;
 
-    Price consultRentalPrice(int days);
-    void addCharacteristic(Characteristic characteristic);
+    public Vehicle(String patent){
+        this.patent = patent;
+        this.basePrice = new Price(30);
+    }
+    public String getPatent(){
+        return this.patent;
+    }
+
+    public abstract Price consultRentalPrice(int days);
+
 }

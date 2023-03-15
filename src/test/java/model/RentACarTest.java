@@ -1,5 +1,4 @@
 package model;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,13 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RentACarTest {
     private RentACar rentACar;
-    private Car baseCar;
+    private Vehicle baseCar;
     private Car premiumCar;
+    private Vehicle cargoVehicle;
     @BeforeEach
     void setUp(){
         this.rentACar = new RentACar();
         this.baseCar = new Car("VEL096");
         this.premiumCar = new Car("MSS083");
+        this.cargoVehicle = new CargoVehicle("ARG023", 800);
     }
 
     @Test
@@ -38,5 +39,12 @@ public class RentACarTest {
         this.premiumCar.addCharacteristic(new Premium(2));
         this.rentACar.addVehicle(this.premiumCar);
         assertEquals(350, this.rentACar.consultRentalPrice("MSS083", 7));
+    }
+
+    @Test
+    @DisplayName("Consult the price of renting a cargo vehicle")
+    public void test03ConsultTheRentalPriceOfACargoVehicleWithMoreEqualTo800For2DaysIs8060(){
+        this.rentACar.addVehicle(this.cargoVehicle);
+        assertEquals(1660, this.rentACar.consultRentalPrice("ARG023", 2));
     }
 }

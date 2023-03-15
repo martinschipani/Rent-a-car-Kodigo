@@ -1,14 +1,15 @@
 package exceptions;
 import model.Car;
 import model.RentACar;
+import model.Vehicle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class InvalidDaysErrorTest {
+public class InvalidDaysExceptionTest {
     private RentACar rentACar;
-    private Car baseCar;
+    private Vehicle baseCar;
     @BeforeEach
     public void setUp(){
         this.rentACar = new RentACar();

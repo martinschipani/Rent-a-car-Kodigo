@@ -2,19 +2,12 @@ package model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Car implements Vehicle{
-    private final String patent;
-    private Price basePrice;
+public class Car extends Vehicle {
 
     private Collection<Characteristic> characteristics;
     public Car(String patent){
-        this.patent = patent;
+        super(patent);
         this.characteristics = new ArrayList<>();
-        this.basePrice = new Price(30);
-    }
-
-    public String getPatent(){
-        return this.patent;
     }
 
     @Override

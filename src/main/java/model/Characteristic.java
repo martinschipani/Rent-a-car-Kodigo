@@ -1,5 +1,5 @@
 package model;
 
-public interface Characteristic {
+interface Characteristic {
     double join();
 }
